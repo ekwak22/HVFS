@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hudson Valley Farmland Stewards | Sustainable Stewardship</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fcfbf7;
+        }
+        h1, h2, h3, h4, .font-serif {
+            font-family: 'Libre Baskerville', serif;
+        }
+        .hero-gradient {
+            background: linear-gradient(rgba(26, 46, 26, 0.7), rgba(26, 46, 26, 0.5)), 
+                        url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+        .letter-spacing-widest {
+            letter-spacing: 0.3em;
+        }
+        .hidden-view {
+            display: none;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(100%);
+        }
+        #mobile-menu.active {
+            transform: translateX(0);
+        }
+        /* Custom image treatment for the gallery */
+        .event-photo {
+            filter: sepia(20%) contrast(1.05);
+            transition: filter 0.5s ease;
+        }
+        .event-photo:hover {
+            filter: none;
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body class="text-slate-800 overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-24">
+                <div class="flex items-center cursor-pointer" href="/">
+                    <div class="flex flex-col leading-none">
+                        <span class="text-[10px] md:text-xs font-bold letter-spacing-widest text-emerald-800 uppercase mb-1">Hudson Valley</span>
+                        <span class="text-lg md:text-2xl font-serif font-bold tracking-tight text-emerald-900 uppercase">Farmland Stewards</span>
+                    </div>
+                </div>
+                <!-- Desktop Nav -->
+                <div class="hidden lg:flex items-center space-x-8 text-sm font-medium">
+                    <a href="/#mission" class="hover:text-emerald-700 transition">Mission</a>
+                    <a href="/#history" class="hover:text-emerald-700 transition">History</a>
+                    <a href="/events" class="hover:text-emerald-700 transition">Events</a>
+                    <a href="/resources" class="hover:text-emerald-700 transition">Resources</a>
+                    <a href="/leadership" class="hover:text-emerald-700 transition">Leadership</a>
+                    <a href="#contact" class="bg-emerald-800 text-white px-6 py-3 rounded-full hover:bg-emerald-900 transition shadow-lg shadow-emerald-900/20 font-bold">Join the Network</a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden flex items-center">
+                    <button class="text-emerald-900 focus:outline-none p-2" onclick="toggleMobileMenu()">
+                        <svg id="menu-icon" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-emerald-900 text-white p-8 lg:hidden">
+        <div class="flex justify-end">
+            <button class="text-white p-2" onclick="toggleMobileMenu()">
+                <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div class="flex flex-col space-y-8 mt-12 text-2xl font-serif">
+            <a href="/#mission" class="hover:text-emerald-300 transition">Mission</a>
+            <a href="/#history" class="hover:text-emerald-300 transition">History</a>
+            <a href="/events" class="hover:text-emerald-300 transition">Events</a>
+            <a href="/resources" class="hover:text-emerald-300 transition">Resources</a>
+            <a href="/leadership" class="hover:text-emerald-300 transition">Leadership</a>
+            <a href="#contact" class="hover:text-emerald-300 transition">Contact</a>
+            <a href="#contact" class="bg-yellow-600 text-white px-8 py-4 rounded-xl font-bold text-lg text-center shadow-xl">Join the Network</a>
+        </div>
+    </div>
+
+    <!-- VIEWS CONTAINER -->
+    <div id="home-view">
+        <!-- Hero Section -->
+        <header class="relative hero-gradient h-[85vh] flex items-center">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="max-w-3xl">
+                    <span class="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-widest text-emerald-100 uppercase bg-emerald-900/50 backdrop-blur-sm rounded-full border border-white/10">
+                        Stewarding the Hudson Valley
+                    </span>
+                    <h1 class="text-5xl md:text-7xl font-serif text-white leading-tight mb-8">
+                        Stewarding Farmland for a <span class="text-emerald-300">Regenerative Future.</span>
+                    </h1>
+                    <p class="text-xl text-emerald-50 mb-10 leading-relaxed font-light text-balanced">
+                        Guided by agro-ecological principles, we are committed to sustainable land stewardship and thriving partnerships with farmers.
+                    </p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Mission Section -->
+        <section id="mission" class="py-24 bg-white">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-serif text-emerald-900 mb-6 tracking-tight">Our Mission</h2>
+                    <div class="h-1.5 w-24 bg-yellow-600 mx-auto rounded-full mb-10"></div>
+                    <p class="text-2xl font-serif italic text-slate-600 leading-relaxed mb-8 text-center md:text-left px-4">
+                        "We empower farmland owners to steward their land for economic, environmental, and social good while strengthening local and regional food systems."
+                    </p>
+                    <p class="text-lg text-slate-500 max-w-3xl mx-auto leading-relaxed text-center md:text-left">
+                        Through education, collaboration and community building, Hudson Valley Farmland Stewards provides resources necessary to support the transition of our region’s agriculture toward a regenerative future.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- History Section -->
+        <section id="history" class="py-24 bg-emerald-900 text-white overflow-hidden relative border-y border-emerald-800">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-serif text-emerald-300 tracking-tight">The History of Our Group</h2>
+                </div>
+                <div class="space-y-6 text-emerald-50 leading-relaxed text-lg text-center md:text-left">
+                    <p>
+                        Hudson Valley Farmland Stewards (HVFS) began as a pilot project led by the <a href="https://farmland.org/" target="_blank" class="text-emerald-300 hover:underline">American Farmland Trust</a> (AFT) and The <a href="https://www.glynwood.org/" target="_blank" class="text-emerald-300 hover:underline">Glynwood</a> Center for Regional Food and Farming, centered on a year-long workshop series for non-operating landowners in the Hudson Valley.
+                    </p>
+                    <p>
+                        The pilot created a dedicated space for landowners to learn about land access, regenerative practices, leasing, and long-term stewardship. Following the conclusion of the pilot, the original core cohort continued to convene independently, maintaining relationships, sharing resources, and supporting one another.
+                    </p>
+                    <p>
+                        Hudson Valley Farmland Stewards emerged from a shared recognition among local landowners that sustaining the region’s agricultural heritage requires a new, more active model of stewardship that addresses today’s farming challenges. As a collective rooted in agro-ecological principles, the group bridges traditional land knowledge with regenerative practices to strengthen long-term food and community resilience in the Hudson Valley.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Goals Section -->
+        <section id="goals" class="py-24 bg-stone-50 border-y border-stone-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                    <div class="max-w-2xl">
+                        <h2 class="text-4xl font-serif text-emerald-900 mb-4 tracking-tight">Strategic Pillars</h2>
+                        <p class="text-slate-600 text-lg">Our goals are designed to build a resilient agricultural ecosystem in the Hudson Valley.</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Pillar 1 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-stone-100 card-hover">
+                        <div class="w-14 h-14 bg-emerald-100 text-emerald-800 rounded-xl flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-emerald-900 leading-tight">Educate & Raise Awareness</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Provide on-line and in-person educational opportunities and resources to help farmland owners better understand farming practices and informative resources on the many benefits of regenerative agriculture, such as AFT's <a href="https://farmlandinfo.org/soil-health-toolkit/" target="_blank" class="text-emerald-700 font-bold hover:underline">Soil Health Toolkit</a> and <a href="/events" class="text-emerald-700 font-bold hover:underline">HVFS Webinars</a>.
+                        </p>
+                    </div>
+
+                    <!-- Pillar 2 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-stone-100 card-hover">
+                        <div class="w-14 h-14 bg-yellow-100 text-yellow-800 rounded-xl flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-emerald-900 leading-tight">Expand Farmland Access</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Provide guidance on connecting farmland owners and farmers to increase access to farmland for regenerative agriculture through resources like <a href="https://nyfarmlandfinder.org/" target="_blank" class="text-emerald-700 font-bold hover:underline">Farmland for a New Generation New York (FNG-NY)</a>.
+                        </p>
+                    </div>
+
+                    <!-- Pillar 3 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-stone-100 card-hover">
+                        <div class="w-14 h-14 bg-blue-100 text-blue-800 rounded-xl flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a2 2 0 00-1.96 1.414l-.703 2.11a2 2 0 01-1.897 1.369H9.316a2 2 0 01-1.897-1.369l-.703-2.11a2 2 0 00-1.96-1.414l-2.387.477a2 2 0 00-1.022.547l-1.166 1.166a2 2 0 01-2.828 0l-.172-.172a2 2 0 010-2.828l1.166-1.166a2 2 0 00.547-1.022l.477-2.387a2 2 0 00-1.414-1.96l-2.11-.703a2 2 0 01-1.369-1.897V9.316a2 2 0 011.369-1.897l2.11-.703a2 2 0 001.414-1.96l-.477-2.387a2 2 0 00-.547-1.022L1.5 1.5l.172-.172a2 2 0 012.828 0l1.166 1.166a2 2 0 001.022.547l2.387.477a2 2 0 001.96-1.414l.703-2.11a2 2 0 011.897-1.369h2.126a2 2 0 011.897 1.369l.703 2.11a2 2 0 001.96 1.414l2.387-.477a2 2 0 001.022-.547l1.166-1.166a2 2 0 012.828 0l.172.172a2 2 0 010 2.828l-1.166-1.166a2 2 0 00-.547-1.022l-.477-2.387a2 2 0 001.414-1.96l2.11.703a2 2 0 011.369 1.897v2.126a2 2 0 01-1.369 1.897l-2.11.703a2 2 0 00-1.414-1.96l.477-2.387z" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-emerald-900 leading-tight">Promote Sustainable Stewardship</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Facilitate connections between farmland owners and stakeholders to engage in grants, pilot programs, research, and other opportunities that advance regional agro-ecology.
+                        </p>
+                    </div>
+
+                    <!-- Pillar 4 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-stone-100 card-hover">
+                        <div class="w-14 h-14 bg-stone-100 text-stone-800 rounded-xl flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 01-9-3.812M9 11a4 4 0 110-8 4 4 0 010 8" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-emerald-900 leading-tight">Build a Supportive Community</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Create a network for farmland owners to connect and share experiences, resources, and strategies for land stewardship and partnership. Build community resilience through agro-ecological principles at our <a href="/events" class="text-emerald-700 font-bold hover:underline">Networking Meetings</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- EVENTS VIEW -->
+    <div id="events-view" class="hidden-view">
+        <section class="py-24 bg-white min-h-[70vh]">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-serif text-emerald-900 mb-6 tracking-tight">Events & Webinars</h2>
+                    <div class="h-1.5 w-24 bg-yellow-600 mx-auto rounded-full mb-10"></div>
+                    <p class="text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto text-balanced">
+                        Connecting Hudson Valley farmland owners through expert-led digital sessions and in-person gatherings.
+                    </p>
+                </div>
+
+                <!-- UPCOMING EVENT: Meet Our Farmers Part II -->
+                <div class="mb-24">
+                    <div class="flex items-center gap-3 mb-8">
+                        <h3 class="text-2xl font-serif font-bold text-emerald-900 border-l-4 border-yellow-600 pl-4 tracking-tight">Upcoming Event</h3>
+                        <span class="inline-block px-3 py-1 bg-yellow-600 text-white text-[10px] font-bold uppercase tracking-widest rounded-full">New</span>
+                    </div>
+
+                    <!-- Event Card -->
+                    <div class="rounded-3xl overflow-hidden border border-stone-200 shadow-xl bg-white">
+
+                        <!-- Livestock photo banner -->
+                        <div class="h-64 md:h-80 overflow-hidden">
+                            <img src="livestock.jpeg" alt="Livestock farming — chickens, cow, pig, and duck on farm" class="w-full h-full object-cover object-center scale-105 hover:scale-100 transition duration-700 event-photo">
+                        </div>
+
+                        <!-- Event Content -->
+                        <div class="p-8 md:p-12">
+
+                            <!-- Header row -->
+                            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-8">
+                                <div class="flex-1">
+                                    <p class="text-[10px] font-bold tracking-widest uppercase text-yellow-700 mb-2">Meet Our Farmers Series · Part II</p>
+                                    <h4 class="text-3xl md:text-4xl font-serif font-bold text-emerald-900 leading-tight mb-3">
+                                        Livestock Farming in the Hudson Valley
+                                    </h4>
+                                    <p class="text-slate-500 text-sm font-medium">An In-Person Convening at Hudson Hollow Farm</p>
+                                </div>
+
+                            </div>
+
+                            <!-- Event details strip -->
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                                <div class="flex items-start gap-3 bg-stone-50 rounded-2xl p-4 border border-stone-100">
+                                    <div class="w-9 h-9 bg-emerald-100 text-emerald-800 rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                                    </div>
+                                    <div>
+                                        <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-0.5">Date & Time</p>
+                                        <p class="text-sm font-semibold text-slate-800 leading-snug">Saturday, May 16, 2026</p>
+                                        <p class="text-sm text-slate-600">2:00 – 5:00 PM</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3 bg-stone-50 rounded-2xl p-4 border border-stone-100">
+                                    <div class="w-9 h-9 bg-yellow-100 text-yellow-800 rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                                    </div>
+                                    <div>
+                                        <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-0.5">Location</p>
+                                        <p class="text-sm font-semibold text-slate-800 leading-snug">The Barn at Hudson Hollow Farm</p>
+                                        <p class="text-sm text-slate-600">182 Schultz Hill Rd, Staatsburg, NY</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3 bg-stone-50 rounded-2xl p-4 border border-stone-100">
+                                    <div class="w-9 h-9 bg-stone-100 text-stone-700 rounded-lg flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+                                    </div>
+                                    <div>
+                                        <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-0.5">Format</p>
+                                        <p class="text-sm font-semibold text-slate-800 leading-snug">In Person</p>
+                                        <p class="text-sm text-slate-600">Featuring Wild Lea Farm</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Description -->
+                            <div class="prose prose-slate max-w-none mb-8 space-y-4">
+                                <p class="text-slate-700 leading-relaxed">
+                                    Livestock farming in the Hudson Valley, NY is heavily focused on sustainable, pasture-raised, and regenerative agriculture, producing high-quality grass-fed beef, dairy, pork, lamb, chickens as well as turkey, geese, quail and rabbits. Farms emphasize animal welfare and ecological restoration, sometimes offering related farm products, education and farm visits. This event will take place in the Barn at Hudson Hollow Farm and will feature several local farming operations, showcasing Wild Lea Farm's on site operations. We will hear directly from farmers about the pasture raised approach, combining different livestock in one system, processing challenges and landowner partnerships. Following conversations and Q&A, we will visit Wild Lea Farm's livestock, walk through fields to observe grazing impacts and enjoy refreshments in the Barn before departing.
+                                </p>
+                                <p class="text-slate-600 text-sm italic leading-relaxed border-l-2 border-yellow-500 pl-4">
+                                    This year, Hudson Valley Farmland Stewards' "Meet our Farmers" series of events is focused on connecting farmland owners with farmers to learn more about farming opportunities and challenges in the Hudson Valley and to develop a supportive dialogue that facilitates successful farming operations on leased land.
+                                </p>
+                            </div>
+
+                            <!-- What to expect -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 mb-10">
+                                <div class="flex items-center gap-2 text-sm text-slate-700">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-500 flex-shrink-0"></span>
+                                    Farmer presentations & Q&A
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-slate-700">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-500 flex-shrink-0"></span>
+                                    Guided grazing field walk
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-slate-700">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-500 flex-shrink-0"></span>
+                                    Live livestock observation
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-slate-700">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-500 flex-shrink-0"></span>
+                                    Refreshments in the Barn
+                                </div>
+                            </div>
+
+                            <!-- CTA -->
+                            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                                <a href="https://forms.gle/Jgj3JKS2WtEW5nMY9" target="_blank" class="inline-flex items-center gap-2 bg-emerald-800 hover:bg-emerald-900 text-white font-bold px-8 py-4 rounded-full shadow-lg shadow-emerald-900/20 transition">
+                                    Register Now
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                                </a>
+                                <p class="text-xs text-slate-400 font-medium italic">Space is limited — early registration recommended.</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Network Meetings Section -->
+                <div class="mb-24">
+                    <h3 class="text-2xl font-serif font-bold text-emerald-900 mb-8 border-l-4 border-yellow-600 pl-4 tracking-tight">Network Meetings</h3>
+                    <p class="text-slate-600 leading-relaxed max-w-3xl mb-8 text-lg">
+                        Our network meets periodically across the Hudson Valley for community field days, farm tours, and peer-to-peer workshops focused on shared stewardship goals. Join the network to receive invitations to our next gathering.
+                    </p>
+                    
+                    <button onclick="document.getElementById('network-gallery').classList.toggle('hidden')" class="inline-flex items-center text-emerald-800 font-bold hover:underline bg-emerald-50 hover:bg-emerald-100 px-5 py-3 rounded-xl transition-colors shadow-sm mb-6">
+                        View Meeting Photos
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+
+                    <!-- Hidden Gallery -->
+                    <div id="network-gallery" class="hidden mb-12">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                            <div class="rounded-xl overflow-hidden shadow-sm border border-stone-100 bg-stone-50 aspect-square">
+                                <img src="Barn.jpg" alt="Networking at the Barn" class="w-full h-full object-cover event-photo cursor-pointer" onclick="openLightbox(this.src)">
+                            </div>
+                            <div class="rounded-xl overflow-hidden shadow-sm border border-stone-100 bg-stone-50 aspect-square">
+                                <img src="Grain1.jpeg" alt="Field Discussion" class="w-full h-full object-cover event-photo cursor-pointer" onclick="openLightbox(this.src)">
+                            </div>
+                            <div class="rounded-xl overflow-hidden shadow-sm border border-stone-100 bg-stone-50 aspect-square">
+                                <img src="Summer.jpeg" alt="Summer Gathering" class="w-full h-full object-cover event-photo cursor-pointer" onclick="openLightbox(this.src)">
+                            </div>
+                            <div class="rounded-xl overflow-hidden shadow-sm border border-stone-100 bg-stone-50 aspect-square">
+                                <img src="First Meeting_Chaseholm Farm.jpg" alt="First Meeting at Chaseholm Farm" class="w-full h-full object-cover event-photo cursor-pointer" onclick="openLightbox(this.src)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recorded Webinars Section (Now Second) -->
+                <div class="mb-24">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-8">
+                        <h3 class="text-2xl font-serif font-bold text-emerald-900 border-l-4 border-yellow-600 pl-4 tracking-tight">Recorded Webinars</h3>
+                        <a href="https://www.youtube.com/playlist?list=PLMrCYvhkcEUc_ogc-0igVY8MQOBMHyEzv" target="_blank" class="mt-4 md:mt-0 inline-flex items-center text-emerald-700 font-bold hover:underline">
+                            View Full YouTube Playlist
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                        </a>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <!-- Webinar 1 (Intro AFT Webinar) -->
+                        <div class="bg-white border border-stone-100 rounded-3xl overflow-hidden shadow-lg card-hover flex flex-col group p-8">
+                            <h4 class="text-xl font-serif font-bold mb-3 text-emerald-900 leading-tight">Farmland Stewardship Overview</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                                An essential introduction for non-operating landowners in the Hudson Valley region.
+                            </p>
+                            <div class="mb-6 flex-grow">
+                                <p class="text-[10px] font-bold text-emerald-800 uppercase tracking-widest mb-1">Featuring</p>
+                                <p class="text-sm text-slate-700 font-medium">Tim Biello and Molly Johnston-Heck <span class="text-slate-500 italic font-normal block mt-0.5">from AFT</span></p>
+                            </div>
+                            <a href="https://youtu.be/ditWXi59Omo?si=uhXtJdzOSpu9bzgK&t=7" target="_blank" class="mt-auto inline-flex items-center text-emerald-700 font-bold hover:underline">
+                                Watch Recording
+                                <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                            </a>
+                        </div>
+
+                        <!-- Webinar 2 (Legal Perspective) -->
+                        <div class="bg-white border border-stone-100 rounded-3xl overflow-hidden shadow-lg card-hover flex flex-col group p-8">
+                            <h4 class="text-xl font-serif font-bold mb-3 text-emerald-900 leading-tight">Legal Perspectives</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                                A deep dive into legal frameworks, leasing, and agreement structures for stewards.
+                            </p>
+                            <div class="mb-6 flex-grow">
+                                <p class="text-[10px] font-bold text-emerald-800 uppercase tracking-widest mb-1">Featuring</p>
+                                <p class="text-sm text-slate-700 font-medium">Jonathan Brown and Jack Hornickel <span class="text-slate-500 italic font-normal block mt-0.5">from Pace University</span></p>
+                            </div>
+                            <a href="https://youtu.be/eKYWD_RS9ag?si=zEaZ54CfsWwf3uOb" target="_blank" class="mt-auto inline-flex items-center text-emerald-700 font-bold hover:underline">
+                                Watch Recording
+                                <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                            </a>
+                        </div>
+
+                        <!-- Webinar 3 (Meet Our Farmers) -->
+                        <div class="bg-white border border-stone-100 rounded-3xl overflow-hidden shadow-lg card-hover flex flex-col group p-8">
+                            <h4 class="text-xl font-serif font-bold mb-3 text-emerald-900 leading-tight">Meet Our Farmers - Part I</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                                Direct regional connections with Hudson Valley farmers implementing regenerative models.
+                            </p>
+                            <div class="mb-6 flex-grow">
+                                <p class="text-[10px] font-bold text-emerald-800 uppercase tracking-widest mb-1">Featuring</p>
+                                <p class="text-sm text-slate-700 font-medium mb-1">Megan Larmer <span class="text-slate-500 italic font-normal">from Glynwood</span></p>
+                                <p class="text-sm text-slate-700 font-medium">Max Morningstar <span class="text-slate-500 italic font-normal">from MX Morningstar</span></p>
+                            </div>
+                            <a href="https://youtu.be/z5q-Ms4YqQw" target="_blank" class="mt-auto inline-flex items-center text-emerald-700 font-bold hover:underline">
+                                Watch Recording
+                                <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-24 text-center">
+                    <a href="/" class="text-emerald-800 font-bold hover:underline flex items-center justify-center mx-auto text-sm uppercase tracking-widest">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+                        Back to Home
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- RESOURCES VIEW -->
+    <div id="resources-view" class="hidden-view">
+        <section class="py-24 bg-white min-h-[70vh]">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-serif text-emerald-900 mb-6 tracking-tight">Stewardship Resources</h2>
+                    <div class="h-1.5 w-24 bg-yellow-600 mx-auto rounded-full mb-10"></div>
+                    <p class="text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto text-balanced">
+                        Essential toolkits and portals for Hudson Valley landowners to advance regenerative agriculture and successful farming partnerships.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Resource 1 -->
+                    <a href="https://farmlandinfo.org/soil-health-toolkit/" target="_blank" class="bg-stone-50 p-8 rounded-3xl border border-stone-100 shadow-sm hover:shadow-md transition card-hover group">
+                        <div class="w-12 h-12 bg-emerald-100 text-emerald-800 rounded-xl flex items-center justify-center mb-6 group-hover:bg-emerald-800 group-hover:text-white transition">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                        </div>
+                        <h3 class="text-xl font-serif font-bold mb-4 text-emerald-900">Soil Health Toolkit</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-6">
+                            The American Farmland Trust's comprehensive guide to understanding soil health metrics and implementing regenerative soil management practices on your land.
+                        </p>
+                        <span class="text-xs font-bold text-yellow-700 uppercase tracking-widest flex items-center">Open Toolkit <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg></span>
+                    </a>
+
+                    <!-- Resource 2 -->
+                    <a href="https://nyfarmlandfinder.org/hub" target="_blank" class="bg-stone-50 p-8 rounded-3xl border border-stone-100 shadow-sm hover:shadow-md transition card-hover group">
+                        <div class="w-12 h-12 bg-emerald-100 text-emerald-800 rounded-xl flex items-center justify-center mb-6 group-hover:bg-emerald-800 group-hover:text-white transition">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+                        </div>
+                        <h3 class="text-xl font-serif font-bold mb-4 text-emerald-900">Farmland Owner Hub</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-6">
+                            Part of Farmland for a New Generation New York, this hub provides specialized resources for non-operating landowners.
+                        </p>
+                        <span class="text-xs font-bold text-yellow-700 uppercase tracking-widest flex items-center">Access Hub <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg></span>
+                    </a>
+
+                    <!-- Resource 3 -->
+                    <a href="https://nyfarmlandfinder.org/" target="_blank" class="bg-stone-50 p-8 rounded-3xl border border-stone-100 shadow-sm hover:shadow-md transition card-hover group">
+                        <div class="w-12 h-12 bg-emerald-100 text-emerald-800 rounded-xl flex items-center justify-center mb-6 group-hover:bg-emerald-800 group-hover:text-white transition">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 01-9-3.812M9 11a4 4 0 110-8 4 4 0 010 8" /></svg>
+                        </div>
+                        <h3 class="text-xl font-serif font-bold mb-4 text-emerald-900">Farmer Matchmaking</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-6">
+                            Connect with farmers looking for land. This FNG-NY's portal helps bridge the gap between landowners and new generations of farmers.
+                        </p>
+                        <span class="text-xs font-bold text-yellow-700 uppercase tracking-widest flex items-center">Find a Farmer <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg></span>
+                    </a>
+                </div>
+
+                <div class="mt-24 text-center">
+                    <a href="/" class="text-emerald-800 font-bold hover:underline flex items-center justify-center mx-auto text-sm uppercase tracking-widest">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+                        Back to Home
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- LEADERSHIP VIEW -->
+    <div id="leadership-view" class="hidden-view">
+        <section class="py-24 bg-white min-h-[70vh]">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-serif text-emerald-900 mb-6 tracking-tight">Our Leadership</h2>
+                    <div class="h-1.5 w-24 bg-yellow-600 mx-auto rounded-full mb-10"></div>
+                    <p class="text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto text-balanced">
+                        Guided by experience and a shared commitment to the Hudson Valley's agro-ecological future.
+                    </p>
+                </div>
+
+                <div class="space-y-24">
+                    <!-- Eugene Kwak Bio -->
+                    <div class="flex flex-col md:flex-row gap-12 items-start">
+                        <div class="w-full md:w-1/3 lg:sticky lg:top-32">
+                            <div class="aspect-square bg-stone-100 rounded-3xl overflow-hidden shadow-xl border-4 border-white">
+                                <img src="https://images.squarespace-cdn.com/content/v1/57742055579fb352cb8c9c05/1620337728279-M31XQ3I63OL4E1AYWJY2/Eugene1.jpg?format=750w" alt="Eugene Kwak" class="w-full h-full object-cover">
+                            </div>
+                            <div class="mt-6 text-center md:text-left">
+                                <h3 class="text-2xl font-serif text-emerald-900 font-bold tracking-tight">Eugene Kwak</h3>
+                                <p class="text-yellow-700 font-bold uppercase tracking-widest text-xs">Co-Convener</p>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-2/3">
+                            <div class="prose prose-emerald lg:prose-lg text-slate-700 leading-relaxed space-y-6 text-sm md:text-base">
+                                <p>
+                                    Eugene Kwak is a licensed architect, educator, and land steward focused on agro-ecological principles, sustainable land stewardship, and long-term partnerships between farmland owners and farmers. He is an Associate Professor in the Department of Architecture and Construction Management at SUNY Farmingdale, where his work explores the intersection of land, food systems, and community resilience.
+                                </p>
+                                <p>
+                                    He is the founder of Togather, a place-based, award-winning initiative recognized with the Green Good Design Award and featured in The New York Times, Dwell, and TEDx. Togather expands farmland access and supports regenerative agriculture through affordable housing and long-term, free land leases for farmers.
+                                </p>
+                                <p>
+                                    Eugene’s work has been shared at diverse national and international conferences across architecture, sustainability, education, and agriculture, and includes professional experience on projects such as the New Housing New York Legacy Project, an affordable housing program. He serves on the American Farmland Trust New York Advisory Council and holds a Bachelor of Architecture from Carnegie Mellon University and a Master of Science in Architecture and Urban Design from Columbia University.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="border-stone-100">
+
+                    <!-- Helene Marsh Bio -->
+                    <div class="flex flex-col md:flex-row gap-12 items-start">
+                        <div class="w-full md:w-1/3 lg:sticky lg:top-32">
+                            <div class="aspect-square bg-stone-100 rounded-3xl overflow-hidden shadow-xl border-4 border-white">
+                                <img src="Helene Marsh.jpeg" alt="Helene Marsh" class="w-full h-full object-cover">
+                            </div>
+                            <div class="mt-6 text-center md:text-left">
+                                <h3 class="text-2xl font-serif text-emerald-900 font-bold tracking-tight">Helene Marsh</h3>
+                                <p class="text-yellow-700 font-bold uppercase tracking-widest text-xs">Co-Convener</p>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-2/3">
+                            <div class="prose prose-emerald lg:prose-lg text-slate-700 leading-relaxed space-y-6 text-sm md:text-base">
+                                <p>
+                                    Helene Marsh is a farmland steward in the Hudson Valley. In the last 5 years, she has turned her attention to the nexus between farming and the environment and the principles of agro-ecology. Her farm is located in Pine Plains, NY where she works with local young farmers to implement regenerative soil practices in conjunction with environmental stewardship, including conservation of grassland bird species.
+                                </p>
+                                <p>
+                                    During the last 25yrs, Helene's focus has been environmental education and conservation. Prior to that she worked in Spain, the UK and the Czech Republic in finance and business. She received a Bachelor’s degree from Harvard University and a Master’s in Science and Environmental Management from the University of California, Santa Barbara.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-24 text-center">
+                    <a href="/" class="text-emerald-800 font-bold hover:underline flex items-center justify-center mx-auto text-sm uppercase tracking-widest">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+                        Back to Home
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- CONTACT / JOIN VIEW -->
+    <div id="contact">
+        <section class="py-24 bg-emerald-900 text-white min-h-[85vh] relative overflow-hidden">
+            <div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 opacity-10">
+                <svg width="600" height="600" viewBox="0 0 100 100" fill="white"><circle cx="50" cy="50" r="50" /></svg>
+            </div>
+            
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-serif mb-6 tracking-tight">Join the Network</h2>
+                    <p class="text-xl text-emerald-100/80 leading-relaxed font-light max-w-2xl mx-auto text-balanced">
+                        Connect with our community of landowners or send us a message about your farmland stewardship goals.
+                    </p>
+                </div>
+
+                <div class="bg-white/5 p-8 md:p-12 rounded-3xl backdrop-blur-md border border-white/10 shadow-2xl">
+                    <form class="flex flex-col gap-6 text-left" onsubmit="sendEmail(event)">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="flex flex-col gap-2">
+                                <label class="text-[10px] font-bold text-emerald-200 uppercase tracking-widest ml-1">First Name</label>
+                                <input type="text" name="firstName" placeholder="First Name" required class="bg-white px-6 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 text-slate-800 font-medium">
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label class="text-[10px] font-bold text-emerald-200 uppercase tracking-widest ml-1">Last Name</label>
+                                <input type="text" name="lastName" placeholder="Last Name" required class="bg-white px-6 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 text-slate-800 font-medium">
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label class="text-[10px] font-bold text-emerald-200 uppercase tracking-widest ml-1">Email Address</label>
+                            <input type="email" name="email" placeholder="email@example.com" required class="bg-white px-6 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 text-slate-800 font-medium w-full">
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label class="text-[10px] font-bold text-emerald-200 uppercase tracking-widest ml-1">Subject</label>
+                            <input type="text" name="subject" placeholder="Inquiry Type / Subject" required class="bg-white px-6 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 text-slate-800 font-medium w-full">
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label class="text-[10px] font-bold text-emerald-200 uppercase tracking-widest ml-1">Message</label>
+                            <textarea name="message" rows="4" placeholder="Tell us about your land or your interest in the network..." required class="bg-white px-6 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 text-slate-800 font-medium w-full resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="mt-4 bg-yellow-600 text-white px-8 py-5 rounded-xl font-bold text-lg hover:bg-yellow-700 transition shadow-lg shadow-black/20 w-full uppercase tracking-widest">Submit Information</button>
+                    </form>
+                </div>
+
+                <div class="mt-16 text-center">
+                    <a href="/" class="text-emerald-100 font-bold hover:underline flex items-center justify-center mx-auto text-sm uppercase tracking-widest opacity-70 hover:opacity-100">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+                        Back to Home
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PRIVACY POLICY VIEW -->
+    <div id="privacy-view" class="hidden-view">
+        <section class="py-24 bg-white min-h-[70vh]">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-serif text-emerald-900 mb-6 tracking-tight">Privacy Policy</h2>
+                    <div class="h-1.5 w-24 bg-yellow-600 mx-auto rounded-full mb-10"></div>
+                </div>
+                <div class="space-y-8 text-slate-700 leading-relaxed text-sm md:text-base">
+                    <p class="italic text-slate-500">Last updated: February 24, 2026</p>
+                    
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-serif font-bold text-emerald-900">1. Information We Collect</h3>
+                        <p>When you interact with the Hudson Valley Farmland Stewards (HVFS) website, particularly when utilizing our "Join the Network" or contact forms, we collect personal information that you voluntarily provide to us. This may include your first name, last name, email address, and any details or inquiries you include in your message.</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-serif font-bold text-emerald-900">2. How We Use Your Information</h3>
+                        <p>The information we collect is used exclusively to respond to your inquiries, facilitate your inclusion in our network, and send you relevant updates regarding events, webinars, and resources related to agro-ecological stewardship in the Hudson Valley. We do not sell, rent, or lease your personal data to third parties.</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-serif font-bold text-emerald-900">3. Third-Party Links</h3>
+                        <p>Our website contains links to external websites and resources (e.g., American Farmland Trust, Glynwood, NY Farmland Finder). HVFS is not responsible for the privacy practices or content of these external sites. We encourage you to review the privacy policies of any third-party sites you visit.</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-serif font-bold text-emerald-900">4. Data Security</h3>
+                        <p>We implement standard security measures to protect the personal information submitted through our website. However, please note that no method of transmission over the internet or electronic storage is 100% secure, and we cannot guarantee absolute security.</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-serif font-bold text-emerald-900">5. Contact Us</h3>
+                        <p>If you have any questions or concerns about this Privacy Policy or how your data is handled, please contact us by navigating to the "Join the Network" page and submitting an inquiry.</p>
+                    </div>
+                </div>
+                <div class="mt-24 text-center">
+                    <a href="/" class="text-emerald-800 font-bold hover:underline flex items-center justify-center mx-auto text-sm uppercase tracking-widest">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+                        Back to Home
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- TERMS OF SERVICE VIEW -->
+    <div id="terms-view" class="hidden-view">
+        <section class="py-24 bg-white min-h-[70vh]">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-serif text-emerald-900 mb-6 tracking-tight">Terms of Service</h2>
+                    <div class="h-1.5 w-24 bg-yellow-600 mx-auto rounded-full mb-10"></div>
+                </div>
+                <div class="space-y-8 text-slate-700 leading-relaxed text-sm md:text-base">
+                    <p class="italic text-slate-500">Last updated: February 24, 2026</p>
+                    
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-serif font-bold text-emerald-900">1. Acceptance of Terms</h3>
+                        <p>By accessing and using the Hudson Valley Farmland Stewards (HVFS) website, you accept and agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our website.</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-serif font-bold text-emerald-900">2. Purpose of Website</h3>
+                        <p>The HVFS website is provided for informational and networking purposes, aiming to empower farmland owners through education, collaboration, and resources related to agro-ecological stewardship. The content on this site does not constitute professional legal or financial advice.</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-serif font-bold text-emerald-900">3. User Conduct</h3>
+                        <p>When using our website or submitting forms, you agree to provide accurate and truthful information. You may not use this website for any unlawful purpose, to harass others, or to distribute malicious software or spam.</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-serif font-bold text-emerald-900">4. Intellectual Property</h3>
+                        <p>The content, organization, graphics, and design of this website are protected by copyright and other intellectual property rights. You may view and share content for personal, non-commercial purposes, but you may not reproduce or republish materials without prior written consent.</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-serif font-bold text-emerald-900">5. Limitation of Liability</h3>
+                        <p>HVFS, its conveners, and its partners shall not be held liable for any direct, indirect, incidental, or consequential damages resulting from the use or inability to use this website, or from reliance on any information provided herein.</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-serif font-bold text-emerald-900">6. Modifications</h3>
+                        <p>We reserve the right to modify these Terms of Service at any time. Changes will be posted on this page, and your continued use of the website following any modifications constitutes acceptance of those changes.</p>
+                    </div>
+                </div>
+                <div class="mt-24 text-center">
+                    <a href="/" class="text-emerald-800 font-bold hover:underline flex items-center justify-center mx-auto text-sm uppercase tracking-widest">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+                        Back to Home
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer id="community" class="bg-stone-900 text-stone-400 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-b border-stone-800 pb-12 mb-12">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <div class="flex flex-col leading-none">
+                            <span class="text-[10px] font-bold letter-spacing-widest text-emerald-500 uppercase mb-1">Hudson Valley</span>
+                            <span class="text-lg font-serif font-bold text-white uppercase tracking-tight">Farmland Stewards</span>
+                        </div>
+                    </div>
+                    <p class="text-sm leading-relaxed mb-6">
+                        Empowering Hudson Valley farmland owners through education, collaboration, and agro-ecological stewardship.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6 uppercase tracking-widest text-[10px]">Quick Links</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li><a href="https://farmlandinfo.org/soil-health-toolkit/" target="_blank" class="hover:text-yellow-600 transition">Soil Health Toolkit</a></li>
+                        <li><a href="https://nyfarmlandfinder.org/" target="_blank" class="hover:text-yellow-600 transition">Farmer Matchmaking</a></li>
+                        <li><a href="/events" class="hover:text-yellow-600 transition">Events & Webinars</a></li>
+                        <li><a href="/resources" class="hover:text-yellow-600 transition">Stewardship Resources</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6 uppercase tracking-widest text-[10px]">The Region</h4>
+                    <p class="text-sm leading-relaxed italic mb-4 text-balanced">
+                        "Strengthening local and regional food systems, one farmland at a time."
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.instagram.com/hv_farmland_stewards" target="_blank" class="p-2 bg-stone-800 rounded-full hover:bg-emerald-800 transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-[0.4em] font-bold">
+                <p>&copy; 2026 Hudson Valley Farmland Stewards</p>
+                <div class="mt-4 md:mt-0 space-x-6">
+                    <a href="/privacy" class="hover:text-white transition">Privacy Policy</a>
+                    <a href="/terms" class="hover:text-white transition">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Image Lightbox Overlay -->
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-black/90 hidden flex items-center justify-center p-4 cursor-zoom-out" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" class="max-w-full max-h-full rounded-lg shadow-2xl">
+    </div>
+
+    <script>
+        function showView(viewId, sectionId = null) {
+            // Hide all views
+            const views = ['home', 'events', 'leadership', 'resources', 'contact', 'privacy', 'terms'];
+            views.forEach(v => {
+                const el = document.getElementById(v + '-view');
+                if (el) el.classList.add('hidden-view');
+            });
+            
+            // Show requested view
+            const targetView = document.getElementById(viewId + '-view');
+            if (targetView) {
+                targetView.classList.remove('hidden-view');
+                window.scrollTo(0, 0);
+            }
+
+            // If a specific section is targeted on the home view
+            if (viewId === 'home' && sectionId) {
+                setTimeout(() => {
+                    const section = document.getElementById(sectionId);
+                    if (section) {
+                        section.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }, 100);
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('active');
+        }
+
+        function openLightbox(src) {
+            const lb = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            lb.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lb = document.getElementById('lightbox');
+            lb.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        async function sendEmail(event) {
+            event.preventDefault();
+            const form = event.target;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const firstName = form.firstName.value;
+            const lastName = form.lastName.value;
+            const email = form.email.value;
+            const subject = form.subject.value;
+            const message = form.message.value;
+
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            try {
+                const response = await fetch('https://formspree.io/f/mzdaykbv', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: `${firstName} ${lastName}`,
+                        email: email,
+                        subject: subject,
+                        message: message,
+                        _replyto: email,
+                        _subject: subject
+                    })
+                });
+
+                if (response.ok) {
+                    // Show success message
+                    const formContainer = form.closest('.bg-white\\/5');
+                    formContainer.innerHTML = `
+                        <div class="text-center py-16">
+                            <div class="w-20 h-20 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <svg class="w-10 h-10 text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-serif text-white mb-4">Message Sent!</h3>
+                            <p class="text-emerald-100/80 leading-relaxed">Thank you, ${firstName}! Your information has been submitted. We'll be in touch soon.</p>
+                        </div>
+                    `;
+                } else {
+                    throw new Error('Submission failed');
+                }
+            } catch (error) {
+                // Fallback to mailto if Formspree fails
+                const mailtoBody = `Name: ${firstName} ${lastName}\nEmail: ${email}\n\nMessage:\n${message}`;
+                const mailtoLink = `mailto:ekwak22@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(mailtoBody)}`;
+                window.location.href = mailtoLink;
+            }
+        }
+    </script>
+
+</body>
+</html>
