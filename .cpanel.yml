@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/hvfacgpk/public_html
+    - /bin/cp -f -- *.html *.jpg *.jpeg "$DEPLOYPATH/"
+    - /bin/cp -R -- events "$DEPLOYPATH/"
